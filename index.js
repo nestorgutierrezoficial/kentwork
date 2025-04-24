@@ -49,9 +49,10 @@ const tablasTipo = [
   "tipocombustible",
   "clasevehiculo",
   "tipocarroceria",
-  "categoria",
+  "tiporemolque",
+  "categoriavehiculo",
   "tipocabina",
-  "propietarios",
+  "personas",
   "empresas"
 ];
 

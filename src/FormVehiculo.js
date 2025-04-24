@@ -9,7 +9,7 @@ const FormVehiculo = () => {
     tipovehiculo: "",
     anio: "",
     ciudadmatricula: "",
-    fechaMatricula: "",
+    fechamatricula: "",
     marca: "",
     modelo: "",
     cilindrada: "",
@@ -17,7 +17,7 @@ const FormVehiculo = () => {
     tipoCombustible: "",
     clasevehiculo: "",
     tipocarroceria: "",
-    categoria: "",
+    categoriavehiculo: "",
     doble_trailer: false,
     tiene_tanque_liquidos: false,
     tiene_tanque_agua: false,
@@ -54,7 +54,7 @@ const FormVehiculo = () => {
       "categoriavehiculo",
       "tipocabina",
       "tiporemolque",
-      "propietarios",
+      "personas",
       "empresas"
     ];
     tablas.forEach(tabla => {
@@ -153,11 +153,11 @@ const FormVehiculo = () => {
         {renderInput("tipotraccion", "Tipo de Tracción")}
         {renderInput("numeropuertas", "Número de Puertas", "number")}
 
-        {renderSelect("tipoVehiculo", "Tipo de Vehículo")}
-        {renderSelect("tipoCombustible", "Tipo de Combustible")}
-        {renderSelect("claseVehiculo", "Clase de Vehículo")}
-        {renderSelect("tipo_carroceria", "Tipo de Carrocería")}
-        {renderSelect("categoria", "Categoría del Vehículo")}
+        {renderSelect("tipovehiculo", "Tipo de Vehículo")}
+        {renderSelect("tipocombustible", "Tipo de Combustible")}
+        {renderSelect("clasevehiculo", "Clase de Vehículo")}
+        {renderSelect("tipocarroceria", "Tipo de Carrocería")}
+        {renderSelect("categoriavehiculo", "Categoría del Vehículo")}
         {renderSelect("tipocabina", "Tipo de Cabina")}
         {renderSelect("tiporemolque", "Tipo de Remolque")}
         {renderSelect("propietario", "Propietario")}
