@@ -14,7 +14,7 @@ const FormVehiculo = () => {
     modelo: "",
     cilindrada: "",
     color: "",
-    tipoCombustible: "",
+    tipocombustible: "",
     clasevehiculo: "",
     tipocarroceria: "",
     categoriavehiculo: "",
@@ -35,22 +35,22 @@ const FormVehiculo = () => {
     quintarueda: "",
     caballosdefuerza: "",
     velociadades: "",
-    tipoTraccion: "",
+    tipotraccion: "",
     propietario: "",
     empresa: "",
     estado: 1,
     observaciones: "",
-    numeroPuertas: ""
+    numeropuertas: ""
   });
 
   const [listas, setListas] = useState({});
 
   useEffect(() => {
     const tablas = [
+      "tipovehiculo",
       "tipocombustible",
       "clasevehiculo",
       "tipocarroceria",
-      "tiporemolque",
       "categoriavehiculo",
       "tipocabina",
       "tiporemolque",
@@ -81,7 +81,7 @@ const FormVehiculo = () => {
       .catch(() => alert("Error al registrar vehículo"));
   };
 
-  const renderSelect = (name, label) => (
+  const renderSelect = (name, label, listaKey) => (
     <div>
       <label className="block text-sm font-semibold text-gray-700 mb-1">{label}</label>
       <select
@@ -91,7 +91,7 @@ const FormVehiculo = () => {
         className="w-full p-2 border border-gray-300 rounded"
       >
         <option value="">Seleccione</option>
-        {(listas[name.replace(/([A-Z])/g, '_$1').toLowerCase()] || []).map(item => (
+        {(listas[listaKey] || []).map(item => (
           <option key={item.id} value={item.id}>{item.nombre}</option>
         ))}
       </select>
@@ -129,11 +129,11 @@ const FormVehiculo = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {renderInput("placa", "Placa")}
-        {renderInput("numero_chasis", "Número de Chasis")}
-        {renderInput("numero_motor", "Número de Motor")}
+        {renderInput("numerochasis", "Número de Chasis")}
+        {renderInput("numeromotor", "Número de Motor")}
         {renderInput("anio", "Año", "number")}
         {renderInput("ciudadmatricula", "Ciudad Matrícula")}
-        {renderInput("fechaMatricula", "Fecha Matrícula", "date")}
+        {renderInput("fechamatricula", "Fecha Matrícula", "date")}
         {renderInput("marca", "Marca")}
         {renderInput("modelo", "Modelo")}
         {renderInput("cilindrada", "Cilindrada")}
@@ -153,15 +153,15 @@ const FormVehiculo = () => {
         {renderInput("tipotraccion", "Tipo de Tracción")}
         {renderInput("numeropuertas", "Número de Puertas", "number")}
 
-        {renderSelect("tipovehiculo", "Tipo de Vehículo")}
-        {renderSelect("tipocombustible", "Tipo de Combustible")}
-        {renderSelect("clasevehiculo", "Clase de Vehículo")}
-        {renderSelect("tipocarroceria", "Tipo de Carrocería")}
-        {renderSelect("categoriavehiculo", "Categoría del Vehículo")}
-        {renderSelect("tipocabina", "Tipo de Cabina")}
-        {renderSelect("tiporemolque", "Tipo de Remolque")}
-        {renderSelect("propietario", "Propietario")}
-        {renderSelect("empresa", "Empresa")}
+        {renderSelect("tipovehiculo", "Tipo de Vehículo", "tipovehiculo")}
+        {renderSelect("tipocombustible", "Tipo de Combustible", "tipocombustible")}
+        {renderSelect("clasevehiculo", "Clase de Vehículo", "clasevehiculo")}
+        {renderSelect("tipocarroceria", "Tipo de Carrocería", "tipocarroceria")}
+        {renderSelect("categoriavehiculo", "Categoría del Vehículo", "categoriavehiculo")}
+        {renderSelect("tipocabina", "Tipo de Cabina", "tipocabina")}
+        {renderSelect("tiporemolque", "Tipo de Remolque", "tiporemolque")}
+        {renderSelect("propietario", "Propietario", "personas")}
+        {renderSelect("empresa", "Empresa", "empresas")}
 
         <div className="col-span-1 md:col-span-2">
           <label className="block text-sm font-semibold text-gray-700 mb-1">Observaciones</label>
@@ -194,4 +194,3 @@ const FormVehiculo = () => {
 };
 
 export default FormVehiculo;
-
