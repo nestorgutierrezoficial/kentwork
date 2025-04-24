@@ -18,11 +18,11 @@ const FormVehiculo = () => {
     clasevehiculo: "",
     tipocarroceria: "",
     categoriavehiculo: "",
-    doble_trailer: false,
+    dobletrailer: false,
     tiene_tanque_liquidos: false,
     tiene_tanque_agua: false,
-    capacidadPasajeros: "",
-    capacidadToneladas: "",
+    capacidadpasajeros: "",
+    capacidadtoneladas: "",
     tipocabina: "",
     tiporemolque: "",
     peso: "",
@@ -34,16 +34,28 @@ const FormVehiculo = () => {
     distanciaentreejes: "",
     quintarueda: "",
     caballosdefuerza: "",
-    velociadades: "",
+    velocidades: "",
     tipotraccion: "",
     propietario: "",
     empresa: "",
     estado: 1,
+    fecharegistro: "",
+    fecharetiro: "",
     observaciones: "",
     numeropuertas: ""
   });
 
-  const [listas, setListas] = useState({});
+  const [listas, setListas] = useState({
+    tipovehiculo: [],
+    tipocombustible: [],
+    clasevehiculo: [],
+    tipocarroceria: [],
+    categoriavehiculo: [],
+    tipocabina: [],
+    tiporemolque: [],
+    personas: [],
+    empresas: []
+  });
 
   useEffect(() => {
     const tablas = [
@@ -59,7 +71,7 @@ const FormVehiculo = () => {
     ];
     tablas.forEach(tabla => {
       axios
-        .get(`https://kentwork.onrender.com/db_kentwork/${tabla}`)
+        .get(`/db_kentwork/${tabla}`)
         .then(res => setListas(prev => ({ ...prev, [tabla]: res.data })))
         .catch(err => console.error(`Error cargando ${tabla}`, err));
     });
@@ -138,8 +150,8 @@ const FormVehiculo = () => {
         {renderInput("modelo", "Modelo")}
         {renderInput("cilindrada", "Cilindrada")}
         {renderInput("color", "Color")}
-        {renderInput("capacidadPasajeros", "Capacidad Pasajeros", "number")}
-        {renderInput("capacidadToneladas", "Capacidad Toneladas", "number")}
+        {renderInput("capacidadpasajeros", "Capacidad Pasajeros", "number")}
+        {renderInput("capacidadtoneladas", "Capacidad Toneladas", "number")}
         {renderInput("peso", "Peso", "number")}
         {renderInput("longitud", "Longitud", "number")}
         {renderInput("ancho", "Ancho", "number")}
@@ -149,7 +161,7 @@ const FormVehiculo = () => {
         {renderInput("distanciaentreejes", "Distancia entre Ejes", "number")}
         {renderInput("quintarueda", "Quinta Rueda", "number")}
         {renderInput("caballosdefuerza", "Caballos de Fuerza", "number")}
-        {renderInput("velociadades", "Velocidades", "number")}
+        {renderInput("velocidades", "Velocidades", "number")}
         {renderInput("tipotraccion", "Tipo de Tracción")}
         {renderInput("numeropuertas", "Número de Puertas", "number")}
 
@@ -162,6 +174,8 @@ const FormVehiculo = () => {
         {renderSelect("tiporemolque", "Tipo de Remolque", "tiporemolque")}
         {renderSelect("propietario", "Propietario", "personas")}
         {renderSelect("empresa", "Empresa", "empresas")}
+        {renderInput("fecharegistro", "Fecha Registro", "date")}
+        {renderInput("fecharetiro", "Fecha Retiro", "date")}
 
         <div className="col-span-1 md:col-span-2">
           <label className="block text-sm font-semibold text-gray-700 mb-1">Observaciones</label>
@@ -175,7 +189,7 @@ const FormVehiculo = () => {
         </div>
 
         <div className="col-span-1 md:col-span-2 flex flex-wrap gap-6 mt-2">
-          {renderCheckbox("doble_trailer", "Doble Trailer")}
+          {renderCheckbox("dobletrailer", "Doble Trailer")}
           {renderCheckbox("tiene_tanque_liquidos", "Tanque de Líquidos")}
           {renderCheckbox("tiene_tanque_agua", "Tanque de Agua")}
         </div>
